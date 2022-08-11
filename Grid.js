@@ -3,7 +3,7 @@ const CELL_SIZE = 20;
 const CELL_GAP = 2;
 
 export default class Grid {
-	#cells
+	#cells;
 
 	constructor(gridElement) {
 		gridElement.style.setProperty('--grid-size', GRID_SIZE);
@@ -19,7 +19,7 @@ export default class Grid {
 	}
 
 	get #emptyCells() {
-		return this.#cells.filter(cell => cell.tile === null);
+		return this.#cells.filter(cell => cell.tile == null);
 	}
 
 	randomEmptyCell() {
@@ -29,10 +29,10 @@ export default class Grid {
 }
 
 class Cell {
-	#cellElement
-	#x
-	#y
-	#tile
+	#cellElement;
+	#x;
+	#y;
+	#tile;
 
 	constructor(cellElement, x, y) {
 		this.#cellElement = cellElement;
@@ -46,7 +46,7 @@ class Cell {
 
 	set tile(value) {
 		this.#tile = value;
-		if(value === null) return
+		if (value == null) return;
 		this.#tile.x = this.#x;
 		this.#tile.y = this.#y;
 	}
